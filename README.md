@@ -4,7 +4,7 @@ Creates a section selector field in the CMS
 
 ## Requirements
 
-This plugin requires Craft CMS 4 or later.
+This plugin requires Craft CMS 4 or later. For Craft 3 please use version 1.0.0
 
 ## Installation
 
@@ -29,13 +29,19 @@ composer require bluegg/sectionfield
 ```
 {% set entries = craft.sectionField.entries(entry.myFieldHandle) %}
 {% set sections = craft.sectionField.sections(entry.myFieldHandle) %}
+```
 
-<h2>Entries</h2>
+### Entries
+
+```
 {% for entry in entries.all() %}
 	{{ entry.title }}
 {% endfor %}
+```
 
-<h2>Sections</h2>
+### Sections
+
+```
 {% for section in sections %}
 	{{ section.name }}
 {% endfor %}
