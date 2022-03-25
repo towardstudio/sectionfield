@@ -1,0 +1,41 @@
+{% import '_includes/forms' as forms %}
+
+{% set allowSections = selectAll ? [true] : field.allowedSections %}
+
+{{ forms.checkboxField({
+    label : 'Multiple Select' | t('section-selection'),
+    instructions : 'If checked, the user can select multiple sections, otherwise they can only select one.' | t('section-selection'),
+    name : 'multiple',
+    checked: field.multiple
+}) }}
+
+<hr>
+
+{{ forms.checkboxField({
+    label : 'Select All Sections' | t('section-selection'),
+    instructions : 'This will allow all sections to be used for selection.' | t('section-selection'),
+    name : 'selectAll',
+    checked: field.selectAll
+}) }}
+
+<hr>
+
+{{ forms.checkboxGroupField({
+    label : 'Allowed Sections' | t('section-selection'),
+    instructions : 'The sections that may be chosen for this field.\n **If selected Select All Sections, all sections are selected**.' | t('section-selection'),
+    name : 'allowedSections',
+    values: allowSections,
+    options : sections
+}) }}
+
+
+<hr>
+
+{{ forms.checkboxGroupField({
+    label : 'Exclude Sections' | t('section-selection'),
+    instructions : 'The sections that will be excluded from the selection for this field.\n **Used when select all is on**.' | t('section-selection'),
+    options : sections,
+    values: field.excludedSections,
+    id : 'excludedSections',
+    name : 'excludedSections',
+}) }}

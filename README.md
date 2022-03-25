@@ -15,6 +15,7 @@ To install the plugin, follow these instructions.
 ```
 cd /path/to/project/craft
 ```
+
 2. Then tell Composer to load the plugin:
 
 ```
@@ -23,27 +24,22 @@ composer require bluegg/sectionfield
 
 3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Website Documentation.
 
-
 ## Usage
+
 ```
 {% set entries = craft.sectionField.entries(entry.myFieldHandle) %}
 {% set sections = craft.sectionField.sections(entry.myFieldHandle) %}
 
 <h2>Entries</h2>
-{% for entry in entries.aqll() %}
-	<pre>
-		{{ dump(entry.title) }}
-	</pre>
+{% for entry in entries.all() %}
+	{{ entry.title }}
 {% endfor %}
 
 <h2>Sections</h2>
 {% for section in sections %}
-	<pre>
-		{{ dump(section.name) }}
-	</pre>
+	{{ section.name }}
 {% endfor %}
 ```
-
 
 [Bluegg Disclaimer](https://github.com/Bluegg/bluegg-open-source-disclaimer)
 
