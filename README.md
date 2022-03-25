@@ -26,24 +26,23 @@ composer require bluegg/sectionfield
 
 ## Usage
 
-```
-{% set entries = craft.sectionField.entries(entry.myFieldHandle) %}
-{% set sections = craft.sectionField.sections(entry.myFieldHandle) %}
-```
-
-### Entries
-
-```
-{% for entry in entries.all() %}
-	{{ entry.title }}
-{% endfor %}
-```
-
 ### Sections
 
 ```
+{% set sections = craft.sectionField.sections(entry.myFieldHandle) %}
+
 {% for section in sections %}
 	{{ section.name }}
+{% endfor %}
+```
+
+### Entries from the selected section/s
+
+```
+{% set entries = craft.sectionField.entries(entry.myFieldHandle) %}
+
+{% for entry in entries.all() %}
+	{{ entry.title }}
 {% endfor %}
 ```
 
