@@ -17,29 +17,29 @@ class SectionFieldType extends Field implements PreviewableFieldInterface
     /**
      * @var bool Contains  values for select all sections.
      */
-    public bool $selectAll = false;
+    public $selectAll = false;
 
     /**
      * @var bool Contains multi-select values for sections.
      */
-    public bool $multiple = false;
+    public $multiple = false;
 
     /**
      * @var array Sections that are allowed for selection in the field settings.
      */
-    public array $allowedSections = [];
+    public $allowedSections = [];
 
     /**
      * @var array Sections that are allowed for selection in the field settings.
      */
-    public array $excludedSections = [];
+    public $excludedSections = [];
 
     /**
      * @inheritdoc
      */
     public static function displayName(): string
     {
-        return Craft::t("sectionfield", "Section");
+        return Craft::t('sectionfield', 'Section');
     }
 
     /**
@@ -48,7 +48,10 @@ class SectionFieldType extends Field implements PreviewableFieldInterface
     public function rules(): array
     {
         $rules = parent::rules();
-        $rules[] = [["allowedSections"], "validateAllowedSections"];
+        $rules[] = [
+            ['allowedSections'],
+            'validateAllowedSections'
+        ];
         return $rules;
     }
 
@@ -65,7 +68,7 @@ class SectionFieldType extends Field implements PreviewableFieldInterface
 
         foreach ($this->allowedSections as $section) {
             if (!isset($sections[$section])) {
-                $this->addError($attribute, Craft::t("sectionfield", "Invalid section selected."));
+                $this->addError($attribute, Craft::t('sectionfield', 'Invalid section selected.'));
             }
         }
     }
@@ -82,7 +85,7 @@ class SectionFieldType extends Field implements PreviewableFieldInterface
 
         if (!empty($editableSections)) {
             foreach ($editableSections as $section) {
-                $sections[$section->id] = Craft::t("site", $section->name);
+                $sections[$section->id] = Craft::t('site', $section->name);
             }
         }
 
@@ -115,8 +118,8 @@ class SectionFieldType extends Field implements PreviewableFieldInterface
         $sections = $this->getSections();
         $excludedSections = $this->excludedSections;
 
-        if (!empty($excludedSections) && !empty($this->selectAll)) {
-            $excludedSections = array_map(function ($value) {
+        if (!empty($excludedSections)  && !empty($this->selectAll) ) {
+            $excludedSections = array_map(function($value) {
                 return intval($value);
             }, $excludedSections);
 
@@ -131,7 +134,7 @@ class SectionFieldType extends Field implements PreviewableFieldInterface
     /**
      * @inheritdoc
      */
-    public function normalizeValue(mixed $value, ElementInterface $element = null): mixed
+    public function normalizeValue($value, ElementInterface $element = null)
     {
         if (is_string($value)) {
             $value = Json::decodeIfJson($value);
@@ -139,7 +142,7 @@ class SectionFieldType extends Field implements PreviewableFieldInterface
 
         if (is_int($value) && $this->multiple) {
             $value = [$value];
-        } elseif (is_array($value) && !$this->multiple && count($value) == 1) {
+        } else if (is_array($value) && !$this->multiple && count($value) == 1) {
             $value = intval($value[0]);
         }
 
@@ -155,7 +158,7 @@ class SectionFieldType extends Field implements PreviewableFieldInterface
     /**
      * @inheritdoc
      */
-    public function serializeValue(mixed $value, ElementInterface $element = null): mixed
+    public function serializeValue($value, ElementInterface $element = null)
     {
         if (is_array($value)) {
             foreach ($value as $key => $id) {
@@ -171,11 +174,14 @@ class SectionFieldType extends Field implements PreviewableFieldInterface
      */
     public function getSettingsHtml(): ?string
     {
-        return Craft::$app->getView()->renderTemplate("sectionfield/_settings", [
-            "field" => $this,
-            "sections" => $this->getSections(),
-            "selectAll" => $this->selectAll,
-        ]);
+        return Craft::$app->getView()->renderTemplate(
+            'sectionfield/_settings',
+            [
+                'field' => $this,
+                'sections' => $this->getSections(),
+                'selectAll' => $this->selectAll,
+            ]
+        );
     }
 
     /**
@@ -183,9 +189,7 @@ class SectionFieldType extends Field implements PreviewableFieldInterface
      */
     public function getInputHtml($value, ElementInterface $element = null): string
     {
-        if (empty($this->allowedSections) && empty($this->selectAll)) {
-            return "You have not selected any section for selection, select in the field settings.";
-        }
+        if (empty($this->allowedSections) && empty($this->selectAll)) return 'You have not selected any section for selection, select in the field settings.';
 
         $sections = $this->getSections();
         $allowSectionsConfig = $this->allowedSections;
@@ -200,16 +204,18 @@ class SectionFieldType extends Field implements PreviewableFieldInterface
         }
 
         $allowSections = array_flip($allowSectionsConfig);
-        $allowSections[""] = true;
+        $allowSections[''] = true;
         if (!$this->multiple && !$this->required) {
-            $sections = ["" => Craft::t("app", "None")] + $sections;
+            $sections = ['' => Craft::t('app', 'None')] + $sections;
         }
         $allowSections = array_intersect_key($sections, $allowSections);
 
-        return Craft::$app->getView()->renderTemplate("sectionfield/_input", [
-            "field" => $this,
-            "value" => $value,
-            "sections" => $allowSections,
-        ]);
+        return Craft::$app->getView()->renderTemplate(
+            'sectionfield/_input', [
+                'field' => $this,
+                'value' => $value,
+                'sections' => $allowSections,
+            ]
+        );
     }
 }
