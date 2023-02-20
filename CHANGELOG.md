@@ -8,4 +8,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### Added
 
-- Initial release
+-   Initial release
+
+## 2.0.1 - 2023-02-20
+
+-   Add New Icon
