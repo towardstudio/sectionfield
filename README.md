@@ -19,7 +19,7 @@ cd /path/to/project/craft
 2. Then tell Composer to load the plugin:
 
 ```
-composer require bluegg/sectionfield
+composer require towardstudio/sectionfield
 ```
 
 3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Website Documentation.
@@ -46,6 +46,6 @@ composer require bluegg/sectionfield
 {% endfor %}
 ```
 
-[Bluegg Disclaimer](https://github.com/Bluegg/bluegg-open-source-disclaimer)
+[Toward Disclaimer](https://github.com/towardstudio/toward-open-source-disclaimer)
 
-Brought to you by [Bluegg](https://bluegg.co.uk)
+Brought to you by [Toward](https://toward.studio)

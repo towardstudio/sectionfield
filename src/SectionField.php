@@ -1,5 +1,5 @@
 <?php
-namespace bluegg\sectionfield;
+namespace towardstudio\sectionfield;
 
 use Craft;
 use craft\base\Plugin;
@@ -9,13 +9,13 @@ use craft\services\Fields;
 use craft\web\twig\variables\CraftVariable;
 use craft\web\View;
 
-use bluegg\sectionfield\fields\SectionFieldType;
-use bluegg\sectionfield\services\SectionFunctions;
+use towardstudio\sectionfield\fields\SectionFieldType;
+use towardstudio\sectionfield\services\SectionFunctions;
 
 use yii\base\Event;
 
 /**
- * @author    bluegg
+ * @author    towardstudio
  * @package   SectionField
  * @since     1.0.0
  *

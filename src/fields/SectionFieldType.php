@@ -1,5 +1,5 @@
 <?php
-namespace bluegg\sectionfield\fields;
+namespace towardstudio\sectionfield\fields;
 
 use Craft;
 

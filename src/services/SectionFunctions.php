@@ -1,5 +1,5 @@
 <?php
-namespace bluegg\sectionfield\services;
+namespace towardstudio\sectionfield\services;
 
 use yii\base\Component;
 
@@ -7,7 +7,7 @@ use Craft;
 use craft\services\Sections;
 use craft\elements\Entry;
 
-use bluegg\sectionfield\SectionField;
+use towardstudio\sectionfield\SectionField;
 
 class SectionFunctions extends Component
 {
