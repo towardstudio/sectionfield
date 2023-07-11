@@ -8,6 +8,7 @@ use craft\base\ElementInterface;
 use craft\base\PreviewableFieldInterface;
 use craft\base\Serializable;
 use craft\elements\Entry;
+use towardstudio\sectionfield\fields\conditions\SectionFieldConditionRule;
 use craft\helpers\Json;
 
 use yii\db\Schema;
@@ -50,6 +51,14 @@ class SectionFieldType extends Field implements PreviewableFieldInterface
         $rules = parent::rules();
         $rules[] = [["allowedSections"], "validateAllowedSections"];
         return $rules;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getElementConditionRuleType(): array|string|null
+    {
+        return SectionFieldConditionRule::class;
     }
 
     /**

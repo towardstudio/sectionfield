@@ -17,3 +17,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## 2.1.0 - 2022-03-20
 
 -   Change Bluegg to Toward
+
+## 2.2.0 - 2023-07-11
+
+-   Add Conditional Elements
