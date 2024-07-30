@@ -87,7 +87,7 @@ class SectionFieldType extends Field implements PreviewableFieldInterface
     private function getSections()
     {
         $sections = [];
-        $editableSections = Craft::$app->getSections()->getEditableSections();
+        $editableSections = Craft::$app->getEntries()->getEditableSections();
 
         if (!empty($editableSections)) {
             foreach ($editableSections as $section) {
