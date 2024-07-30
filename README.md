@@ -4,7 +4,7 @@ Creates a section selector field in the CMS
 
 ## Requirements
 
-This plugin requires Craft CMS 4 or later. For Craft 3 please use version 1.0.0
+This plugin requires Craft CMS 5 or later. For Craft 4 please use version 2.0.0
 
 ## Installation
 
@@ -22,7 +22,7 @@ cd /path/to/project/craft
 composer require towardstudio/sectionfield
 ```
 
-3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Website Documentation.
+3. In the Control Panel, go to Settings → Plugins and click the “Install” button for Section Field.
 
 ## Usage
 
