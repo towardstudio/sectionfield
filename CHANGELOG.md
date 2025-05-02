@@ -21,3 +21,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 ## 2.2.0 - 2023-07-11
 
 -   Add Conditional Elements
+
+## 3.0.1 - 2025-05-02
+
+-   Update service to use Entries service instead of Sections service which doesn't exist in Craft 5

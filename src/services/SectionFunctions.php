@@ -4,7 +4,6 @@ namespace towardstudio\sectionfield\services;
 use yii\base\Component;
 
 use Craft;
-use craft\services\Sections;
 use craft\elements\Entry;
 
 use towardstudio\sectionfield\SectionField;
@@ -25,12 +24,12 @@ class SectionFunctions extends Component
 		{
 			foreach ($value as $key => $id)
 			{
-				array_push($query, Craft::$app->sections->getSectionById($id));
+				array_push($query, Craft::$app->getEntries()->getSectionById($id));
 			};
 		}
 		elseif (is_int($value))
 		{
-			array_push($query, Craft::$app->sections->getSectionById($value));
+			array_push($query, Craft::$app->getEntries()->getSectionById($value));
 		}
 		else
 		{
